@@ -1,13 +1,17 @@
-language: generic
 sudo: required
+
+language: node_js
+node_js:
+  - "stable"
+
 services:
   - docker
 
 before_install:
-  - docker build -t akachi/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t akachi/multi-docker -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true akachi/react-test  npm test -- --coverage
+  - docker run -e CI=true akachi/multi-docker  npm run test -- --coverage
 
 after_success:
   #building the various images
