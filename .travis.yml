@@ -16,7 +16,7 @@ script:
 after_success:
   #building the various images
   - docker build -t ajulibe/multi-client ./client
-  - docker build-t ajulibe/multi-nginx ./nginx
+  - docker build -t ajulibe/multi-nginx ./nginx
   - docker build -t ajulibe/multi-server ./server
   - docker build -t ajulibe/multi-worker ./worker
   #Log in to the docker CLI
