@@ -11,7 +11,7 @@ script:
 
 after_success:
   #building the various images
-  - docker build -t akachi/multi-client ./client
+  #- docker build -t akachi/multi-client ./client
   - docker build-t akachi/multi-nginx ./nginx
   - docker build -t akachi/multi-server ./server
   - docker build -t akachi/multi-worker ./worker
