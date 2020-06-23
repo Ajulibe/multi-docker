@@ -27,23 +27,23 @@ after_success:
   - docker push ajulibe/multi-server
   - docker push ajulibe/multi-worker
 
-  deploy: #This deploys the whole folder onto elasticbeanstalk so
+  #This deploys the whole folder onto elasticbeanstalk so
   #it's the production Dockerfile that would be used by
   #elasticbeanstalk to startup this app
-    edge: true
-    provider: elasticbeanstalk
-  region: us-east-2 #region you selected when creating the elb application
-  app: multi-docker #the aws elb app name
-  env: MultiDocker-env #the aws elb app environment
-  bucket_name: elasticbeanstalk-us-east-2-709165253790 #s3 storage location for all apps deployed to this region
-  bucket_path: multi-docker #name of the folder where this app you're targeting is located or going to exist
-  on:
-    branch: master
-  access_key_id:
-    $AWS_ACCESS_KEY #Environment variable generated
-    #in IAM of AWS but stored in travis ci
-  secret_access_key:
-    $AWS_SECRET_KEY # Another environment variable
-    #generated in IAM of AWS but stored in travis ci
-    #commit it
-
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+region: us-east-2 #region you selected when creating the elb application
+app: multi-docker #the aws elb app name
+env: MultiDocker-env #the aws elb app environment
+bucket_name: elasticbeanstalk-us-east-2-709165253790 #s3 storage location for all apps deployed to this region
+bucket_path: multi-docker #name of the folder where this app you're targeting is located or going to exist
+on:
+  branch: master
+access_key_id:
+  $AWS_ACCESS_KEY #Environment variable generated
+  #in IAM of AWS but stored in travis ci
+secret_access_key:
+  $AWS_SECRET_KEY # Another environment variable
+  #generated in IAM of AWS but stored in travis ci
+  #commit it
